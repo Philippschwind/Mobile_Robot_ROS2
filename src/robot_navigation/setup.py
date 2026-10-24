@@ -24,6 +24,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'velocity_publisher = robot_navigation.velocity_publisher:main',
+            'velocity_monitor = robot_navigation.velocity_monitor:main',
         ],
     },
 )
