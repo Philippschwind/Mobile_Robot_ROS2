@@ -2,6 +2,7 @@
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
+import random
 
 
 class VelocityPublisher(Node):
@@ -24,17 +25,16 @@ class VelocityPublisher(Node):
 
     def publish_velocity(self):
         msg = Twist()
-
         # Forward movement: 0.2 m/s
-        msg.linear.x = 0.2
+        msg.linear.x = random.uniform(0, 1.0)
 
-        # No rotation
-        msg.angular.z = 0.0
+        # Random rotation
+        msg.angular.z = random.uniform(-1.0, 1.0)
 
         self.publisher.publish(msg)
 
         self.get_logger().info(
-            f'Publishing velocity: {msg.linear.x} m/s'
+            f'Publishing velocity: Linear {msg.linear.x} m/s, Angular {msg.angular.z} rad/s'
         )
 
 
